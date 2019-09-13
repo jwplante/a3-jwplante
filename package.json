@@ -1,0 +1,12 @@
+{
+  "name": "CS Clicker",
+  "version": "1.0",
+  "description": "A fun game",
+  "author": "James Plante (jwplante)",
+  "scripts": {
+    "start": "node server.improved.js"
+  },
+  "dependencies": {
+    "mime": "^2.4.4"
+  }
+}

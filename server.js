@@ -28,7 +28,7 @@ const express = require('express'),
       bodyParser = require('body-parser')
       pLocal = require('passport-local');
 
-app.use( express.static('public') )
+app.use( express.static('.') )
 app.use( bodyParser.json() )
 
 app.get('/', function(request, response){

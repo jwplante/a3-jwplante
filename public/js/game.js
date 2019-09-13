@@ -67,8 +67,9 @@ const updateLOCOnly = function () {
   },
     body = JSON.stringify(json)
 
-  fetch('/submit', {
+  fetch('/updateData', {
     method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
     body
   })
     .then(function (response) {
@@ -110,8 +111,9 @@ const purchaseItems = function (e) {
     },
     body = JSON.stringify(json)
 
-  fetch('/submit', {
+  fetch('/updateData', {
     method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
     body
   })
     .then(function (response) {

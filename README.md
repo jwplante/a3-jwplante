@@ -10,6 +10,9 @@ CS Clicker is a game inspired by idle games such as Cookie Clicker and Paperclip
 - serve-favicon - Allows the Express server to serve favicons to the user.
 
 ## Technical Achievements
+- **Basic Login Page** - Implemented the ability to create new users by using Sign-Up fields in the login prompt, supporting an arbitrary number of users. Includes error correction, so users are informed that their credentials are incorrect.
+- **Save Game Reset** - Implemented a feature to 'delete' user data by wiping all data fields in the database (although the login is retained), and updating the user interface to reflect the wipe, enabling a full reset of progress.
+
 Unfortunately, I was unable to make any additional technical advancements due to time constraints. However, if given more time, I would have done the following. I will eventually implement these, since I plan to continue working on the game sometime after the assignment is finished.
 - **Improved Game Purchase Balance** - According to user tests that were conducted (as seen in the Design Achievements Section), I would have given greater incentive to purchasing late-game items by improving the price/(loc/s) ratio, as currently it is most efficient to buy Hobbyists to increase the loc/s with the least amount of lines of code.
 - **Hashing Passwords** - To improve security of the site, I would have encrypted the passwords when they are stored in the database.
@@ -17,7 +20,7 @@ Unfortunately, I was unable to make any additional technical advancements due to
 ### Design/Evaluation Achievements
 - **Included About Section**: I included a plot summary of the game based on my plot summary from the previous assignment to give incentive for the player to keep playing the game, and included my social media links so they can follow my other work and see my resume.
 - **User Testing**: I tested CS Clicker with two other users in an attempt to find any bugs and to gain insight for any future builds of the game. Here are my main findings:
-  - The UI elements are too large for the page itself, since users have to scroll down to buy items. 
+  - The UI elements are too large for the page itself, since users have to scroll down to buy items. (Also, one of my users trying to break the UI by trying to overflow the counter caused the results table to not be bounded on the right side of the screen, which needs to be fixed in a future release).
   - The game is fundamentally unbalanced in favor of the Hobbyists due to their high (loc/s)/price ratio, meaning that endgame purchases are useless.
   - The game could be improved to include support for other screen sizes/devices (I also tested the page with a text-only browser and while the website was readable, it was nonfunctional).
   - Clicking the button is pointless after the early-game due to it increasing the counter by one. This could be fixed by having a scale that can increase based on the number of purchased items or as an upgrade itself.

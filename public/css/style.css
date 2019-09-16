@@ -2,16 +2,20 @@
 /* Element Selectors */
 
 p {
-  font-family: 'Open Sans', sans-serif;
   font-size: 20px;
   color:white;
+  margin: 20px;
 }
 
 header {
     font-size: 75px;
+    margin: 50px;
     text-align:center;
-    font-family: 'VT323', monospace;
     color:green;
+}
+
+h1, h2 {
+  color:white
 }
 
 caption {
@@ -24,7 +28,6 @@ table, th, td {
 	border: 1px solid white; /* Changed from black to white */
 	text-align:center;
 	table-layout:auto;
-  font-family: 'Open Sans', sans-serif;
   font-size:20px; /* Changed font size */
   /* Added padding to the sides */
   padding-left:10px;
@@ -40,39 +43,27 @@ th {
 	background-color:dimgray; /* Changed background to a dark grey */
 }
 
-legend {
-  font-size:20px;
-  font-family: 'Open Sans', sans-serif;
-  color:white;
+img {
+  image-rendering: crisp-edges;
+  margin:20px;
 }
 
 body {
-  display: flex;
   background:black;
   margin:0 auto;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width:75%;
+  font-family: 'Press Start 2P', cursive;
 }
 
 button {
-  margin: 0 auto;
-  color:white;
-  background:black;
-  border: 2px solid white;
-  transition-duration:0.3s;
-}
-
-button:hover {
-  background: white;
-  color:black;
-}
+  padding: 10px;
+  margin:20px;
+  display:block; }
 
 /* ID Selectors */
 #results_section {
     display: none
 }
+
 
 #store_area {
   display: flex;
@@ -80,8 +71,16 @@ button:hover {
 }
 
 #counter {
-  font-size: 50px;
-  text-align: center;
+  font-size: 40px;
+}
+
+#counter_area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width:100%;
+
 }
 
 /* Class Selectors */
@@ -89,14 +88,14 @@ button:hover {
   	margin:20px;
 }
 
-.small_button {
-  height:5%;
-  width:15%;
-  margin: 0 auto;
+.black_text {
+  color:black;
 }
 
 .large_button {
   height: 15%;
-  width: 100%;
+  width: 80%;
+  padding:20px;
   font-size:30px;
+  margin:40px;
 }

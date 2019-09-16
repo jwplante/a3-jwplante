@@ -23,7 +23,7 @@ let rates = {
 }
 
 let resultsShown = false;
-let shownIds = [0]; // Array of elements shown in the results table already
+let shownIds = []; // Array of elements shown in the results table already
 let headerState = true;
 
 /**
@@ -56,7 +56,6 @@ const linesPerSecond = function () {
 const updateLOCOnly = function () {
   const json = {
     action: "modifyData",
-    uid: uid,
     cursors: 0,
     hobbyists: 0,
     csMajors: 0,
@@ -69,6 +68,7 @@ const updateLOCOnly = function () {
 
   fetch('/updateData', {
     method: 'POST',
+    credentials:"include",
     headers: { 'Content-Type': 'application/json' },
     body
   })
@@ -100,7 +100,6 @@ const purchaseItems = function (e) {
     quantum = document.querySelector('#quantum'),
     json = {
       action: "modifyData",
-      uid: uid,
       cursors: parseInt(cursors.value),
       hobbyists: parseInt(hobbyists.value),
       csMajors: parseInt(csMajors.value),
@@ -135,11 +134,11 @@ const purchaseItems = function (e) {
 
 /**
  * Refresh the cache from the server to the client (used for after initializing and purchases)
- * @param {} uid 
  */
-const getDataFromServer = function (uid) {
-  fetch('/getData/' + String(uid), {
-    method: 'GET'
+const getDataFromServer = function () {
+  fetch('/getData/', {
+    method: 'GET',
+    credentials:"include"
   })
     .then(function (response) {
       response.text().then(function (recieveText) {
@@ -183,6 +182,17 @@ const setCell = function (row, cellNo, element) {
   cell.innerHTML = element;
 }
 
+const deleteData = function() {
+  fetch('/deleteUserData', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({consent:"yes"})
+  }).then(function(response){
+    console.log("User data wiped.");
+    getDataFromServer();
+  })
+}
+
 const showResults = function (e) {
 
   let resultsButton = document.getElementById('results_button')
@@ -205,10 +215,10 @@ const showResults = function (e) {
           // Get the object array
           let objArray = JSON.parse(recieveText);
           objArray.forEach(function (obj) {
-            if (!shownIds.includes(obj.uid)) {
+            if (!shownIds.includes(obj.userName)) {
 
               let row = table.insertRow()
-              setCell(row, 0, obj.uid);
+              setCell(row, 0, obj.userName);
               setCell(row, 1, obj.loc);
               setCell(row, 2, obj.cursors);
               setCell(row, 3, obj.hobbyists);
@@ -217,7 +227,7 @@ const showResults = function (e) {
               setCell(row, 6, obj.server);
               setCell(row, 7, obj.quantumComputers);
               setCell(row, 8, obj.totalLoc);
-              shownIds.push(obj.uid);
+              shownIds.push(obj.userName);
             }
             resultsButton.innerHTML = "Hide Results"
             resultsSection.style.display = "block";
@@ -238,28 +248,12 @@ window.onload = function () {
   const resultsButton = document.getElementById('results_button')
   resultsButton.onclick = showResults
 
-  let localStorage = window.localStorage;
-
-  /* Checking if UID exists, if so, get it from the server */
-  if (!localStorage.getItem("uid")) {
-    console.log("Does not have a cookie for UID, getting one from server.")
-    fetch('/getUID', {
-      method: 'GET'
-    })
-      .then(function (response) {
-        // do something with the reponse
-        response.text().then(function (recieveText) {
-          console.log("Response " + recieveText)
-          localStorage.setItem("uid", recieveText)
-          uid = localStorage.getItem("uid")
-          getDataFromServer(uid);
-        })
-      })
-  } else {
-    uid = localStorage.getItem("uid")
-    getDataFromServer(uid);
-    updateUI();
-  }
+  const deleteButton = document.getElementById('delete_button')
+  deleteButton.onclick = deleteData;
+    
+  getDataFromServer();
+  updateUI();
+  
 }
 
 /* Get the current linesPerSecond and increment the counter by that amount */

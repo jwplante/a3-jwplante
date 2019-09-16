@@ -1,74 +1,24 @@
-Assignment 3 - Persistence: Two-tier Web Application with Flat File Database, Express server, and CSS template
-===
+## CS Clicker (v 2.0)
 
-Due: September 16th, by 11:59 AM.
+Link: https://a3-jwplante.glitch.me/
 
-This assignnment continues where we left off, extending it to use the most popular Node.js server framework (express), a flat file database suitable for small applications (lowdb), and a CSS application framework / template of your choice (Boostrap, Material Design, Semantic UI, Pure etc.)
-
-
-Baseline Requirements
----
-
-Your application is required to implement the following functionalities:
-
-- a `Server`, created using Express (no alternatives will be accepted for this assignment)
-- a `Results` functionality which shows the entire dataset residing in the server's memory
-- a `Form/Entry` functionality which allows users to add, modify, and delete data items (must be all three!) associated with their user name / account.
-- Use of at least five [Express middleware packages](https://expressjs.com/en/resources/middleware.html). Explore! 
-- Basic authentication using the [Passport middleware](http://www.passportjs.org) for Express (this counts as one of your five middleware packages). We encourage using the Local strategy, but OAuth (Open Authentication) can also be used for additional technical achievement. The course staff cannot help you with the various flavors of OAuth strategies. YOU MUST PROVIDE US WITH ACCOUNT CREDENTIALS TO LOGIN TO YOUR APPLICATION IF YOU USE OAUTH. The course staff cannot be expected to have credentials for any particular OAuth service.
-- Persistent data storage in between server sessions. [lowdb](https://github.com/typicode/lowdb) is a suitable database package for this assignment and will be discussed in class.
-- Use of a [CSS framework or template](https://github.com/troxler/awesome-css-frameworks). This should do the bulk of your styling/CSS for you and be appropriate to your application. For example, don't use [NES.css](https://nostalgic-css.github.io/NES.css/) (which is awesome!) unless you're creating a game or some type of retro 80s site.
-
-Your application is required to demonstrate the use of the following concepts:
-
-HTML:
-- HTML input tags and form fields of various flavors (`<textarea>`, `<input>`, checkboxes, radio buttons etc.)
-- HTML that can display all data *for a particular authenticated user*. Note that this is different from the last assignnment, which required the display of all data in memory on the server.
-
-Note that it might make sense to have two simple pages for this assignment, one that handles login / authentication, and one that contains the rest of your application. For this assignment, it is acceptable to simply create new user accounts upon login if none exist, however, you must alert your users to this fact. If you're not using OAuth 
-
-CSS:
-- CSS styling should primarily be provided by your chosen template/framework. Oftentimes a great deal of care has been put into designing CSS templates; don't override their stylesheets unless you are extremely confident in your graphic design capabilities. The idea is to use CSS templates that give you a professional looking design aesthetic without requiring you to be a graphic designer yourself.
-
-JavaScript:
-- At minimum, a small amount of front-end JavaScript to get / fetch data from the server. See the [previous assignment](https://github.com/cs4241-19a/a2-shortstack) for reference.
-
-Node.js:
-- A server using Express, at least five pieces of Express middleware, and a persistent database (a flat file using lowdb is great).
-
-Deliverables
----
-
-Do the following to complete this assignment:
-
-1. Implement your project with the above requirements. A good potential starting point is to use the "hello-express" project template inside of Glitch; this appears as an option when you hit the "New Project" button. Use the work you did in the last assignment as a reference to implement functionality, as well as the notes from class on 9/9 and 9/12.
-2. If you developed your project locally, deploy your project to Glitch, and fill in the appropriate fields in your package.json file.
-3. Test your project to make sure that when someone goes to your main page on Glitch, it displays correctly.
-4. Ensure that your project has the proper naming scheme `a3-yourname` so we can find it.
-5. Fork this repository and modify the README to the specifications below. You do not need to include any of your project files in this repo (we will see those on Glitch), you only need to update and commit the README file.
-6. Create and submit a Pull Request to the original repo. Name the pull request using the following template: `a3-gitname-firstname-lastname`.
-
-Sample Readme (delete the above when you're ready to submit, and modify the below so with your links and descriptions)
----
-
-## Your Web Application Title
-
-your glitch link e.g. http://a3-charlieroberts.glitch.me
-
-Include a very brief summary of your project here. Images are encouraged, along with concise, high-level text. Be sure to include:
-
-- the goal of the application
-- challenges you faced in realizing the application
-- what authentication strategy / database you chose to use and why (choosing one because it seemed the easiest to implement is perfectly acceptable)
-- what CSS framework you used and why.
-  - include any modifications to the CSS framework you made via custom CSS you authored.
-- the five Express middleware packages you used and a short (one sentence) summary of what each one does.
+CS Clicker is a game inspired by idle games such as Cookie Clicker and Paperclips, where the main objective is to push one button to increment a counter, and this counter can be used to purchase other items to increase this counter by a set rate. The goal of this version of the application is to add a revamped user interface, login screen, and persistent state across server sessions. The main challenges when realizing the application were rewriting most of the server code for React (resulting in dealing with a large amount of technical debt for the duration of the project in order to get it in a functioning state), and finding applicable express middleware, as most of the application was designed without it initially. I used Passport to implement authentication functionality and lowdb for the database, as they were the easiest to implement at the time given the timeframe and they were the most documented. I used NES.css (Link here: https://nostalgic-css.github.io/NES.css/) since it was the exact aesthetic that was initially desired in the application during Assignment 2. The five middleware packages I used for this project are:
+- express-session - Middleware responsible for maintaining cookie sessions in Express.
+- passport - Authentication middleware that handles both error handling and authenticating users.
+- helmet - Security suite that provides automatic protection for certain attacks such as XSS attacks, MIME sniffing and more.
+- body-parser - Automatically parses the body of a response to extract JSON objects.
+- serve-favicon - Allows the Express server to serve favicons to the user.
 
 ## Technical Achievements
-- **Tech Achievement 1**: I used OAuth authentication via the GitHub strategy
-- **Tech Achievement 2**: I used over ten Express middleware packages, enabling me to create a server that...
+Unfortunately, I was unable to make any additional technical advancements due to time constraints. However, if given more time, I would have done the following. I will eventually implement these, since I plan to continue working on the game sometime after the assignment is finished.
+- **Improved Game Purchase Balance** - According to user tests that were conducted (as seen in the Design Achievements Section), I would have given greater incentive to purchasing late-game items by improving the price/(loc/s) ratio, as currently it is most efficient to buy Hobbyists to increase the loc/s with the least amount of lines of code.
+- **Hashing Passwords** - To improve security of the site, I would have encrypted the passwords when they are stored in the database.
 
 ### Design/Evaluation Achievements
-- **Design Achievement 1**: I tested my application using screen reading software, and found that...
-- **Design Achievement 2**: I followed best practices for accessibility, including providing alt attributes for images and using semantic HTML. There are no `<div>` or `<span>` elements in my document.
-- **Design Achievement 3**: We tested the application with n=X users, finding that...
+- **Included About Section**: I included a plot summary of the game based on my plot summary from the previous assignment to give incentive for the player to keep playing the game, and included my social media links so they can follow my other work and see my resume.
+- **User Testing**: I tested CS Clicker with two other users in an attempt to find any bugs and to gain insight for any future builds of the game. Here are my main findings:
+  - The UI elements are too large for the page itself, since users have to scroll down to buy items. 
+  - The game is fundamentally unbalanced in favor of the Hobbyists due to their high (loc/s)/price ratio, meaning that endgame purchases are useless.
+  - The game could be improved to include support for other screen sizes/devices (I also tested the page with a text-only browser and while the website was readable, it was nonfunctional).
+  - Clicking the button is pointless after the early-game due to it increasing the counter by one. This could be fixed by having a scale that can increase based on the number of purchased items or as an upgrade itself.
+  - The clicker button could be changed from blue to green to have a more consistent colorscheme (This change has already been implemented).
